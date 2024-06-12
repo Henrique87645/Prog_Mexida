@@ -5,13 +5,13 @@ void moverDireita90(unsigned char V)
 {
   motor3.setSpeed(V);
   motor3.run(FORWARD);
-  motor4.setSpeed(V-180);
+  motor4.setSpeed(V-170);
   motor4.run(BACKWARD);
 } 
 
 void moverEsquerda90(unsigned char V)
 {
-  motor3.setSpeed(V-180);
+  motor3.setSpeed(V-170);
   motor3.run(FORWARD);
   motor4.setSpeed(V);
   motor4.run(BACKWARD);
