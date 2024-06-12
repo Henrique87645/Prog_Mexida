@@ -34,6 +34,23 @@ void moverEsquerda(unsigned char V)
   motor4.run(BACKWARD);
 } // FIM CURVA IR 
 
+//COMEÇO MOVER ULTRASSONICO
+void moverDireitaUltra(unsigned char V)
+{
+  motor3.setSpeed(V);
+  motor3.run(FORWARD);
+  motor4.setSpeed(V);
+  motor4.run(BACKWARD);
+} 
+
+void moverEsquerdaUltra(unsigned char V)
+{
+  motor3.setSpeed(V);
+  motor3.run(FORWARD);
+  motor4.setSpeed(V);
+  motor4.run(BACKWARD);
+}//FIM MOVER ULTRASSONICO
+
 void moverFrente(unsigned char V)
 {
   motor3.setSpeed(V);
@@ -41,7 +58,6 @@ void moverFrente(unsigned char V)
   motor4.setSpeed(V);
   motor4.run(BACKWARD);  
 } 
-
 
 void moverTras(unsigned char V)
 {

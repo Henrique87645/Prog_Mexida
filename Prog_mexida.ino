@@ -6,9 +6,8 @@ AF_DCMotor motor4(2); //Seleção do Motor 2
 //VELOCIDADE
 int V = 170;
 
-//segue linha
+//COMEÇO SEGUE LINHA
 int IR[] = {48, 44, 50, 52, 46};
-
 /*Posições vetor:
   [0] = esquerda
   [1] = centro
@@ -16,29 +15,23 @@ int IR[] = {48, 44, 50, 52, 46};
   [3] = direita 90
   [4] = esquerda 90
 */
-//int K = 0.8; //alta correção
-// int k = 0.5; //baixa correção
-
-//LDR (verde)
-// int ldrPinEsq = 0; 
-// int ldrPinDir = 0; 
-// int verdeVal = 500; 
-// int ldrEsq = 0; //Valor lido do LDR
-// int ldrDir = 0; //Valor lido do LDR
+//FIM SEGUE LINHA
 
 void setup(){
 //DECLARANDO O SENSOR IR COMO INPUT
-    for (int i = 0; i <= 5; i++) {
-   pinMode(IR[i], INPUT);
-   }     
+  for (int i = 0; i <= 5; i++) {
+    pinMode(IR[i], INPUT);
+  }     
+  
+//COMEÇO ULTRASSONICO
+  pinMode(trig, OUTPUT); //trig envia o sinal
+  pinMode(echo, OUTPUT); //echo recebe o sinal
+//FIM ULTRASSONICO
 
   //Setup Serial Monitor
   Serial.begin(9600); 
   pinMode(22, OUTPUT);
   pinMode(24, OUTPUT);
-  //Verde
-  // pinMode(ldrPinEsq, OUTPUT); 
-  // pinMode(ldrPinDir, OUTPUT); 
 }
 
 
@@ -49,6 +42,7 @@ void loop() {
 
   //Curva90();
   //Seguelinha();  
+  //ultrassonico();
   //testes do motor
   //moverFrente(255);
   //moverTras(255);   
