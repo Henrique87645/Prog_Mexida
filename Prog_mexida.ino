@@ -6,7 +6,7 @@ AF_DCMotor motor3(1); //Seleção do Motor 1
 AF_DCMotor motor4(2); //Seleção do Motor 2
 
 //VELOCIDADE
-int V = 200;
+int V = 210;
 
 //segue linha
 int IR[] = {48, 44, 50, 52, 46};
@@ -21,12 +21,10 @@ int IR[] = {48, 44, 50, 52, 46};
 //int K = 0.8; //alta correção
 // int k = 0.5; //baixa correção
 
-//LDR (verde)
- int ldrPinEsq = 4; 
- int ldrPinDir = 5; 
- int verdeVal = 500; 
- int ldrEsq = 0; //Valor lido do LDR
- int ldrDir = 0; //Valor lido do LDR
+//LDR (verde) 
+ int verdeVal = 600; 
+ int ldrEsq = A14; 
+ int ldrDir = A15; 
 
 void setup(){
 //DECLARANDO O SENSOR IR COMO INPUT
@@ -36,22 +34,23 @@ void setup(){
 
   //Setup Serial Monitor
   Serial.begin(9600); 
-  pinMode(22, OUTPUT);
   pinMode(24, OUTPUT);
+  pinMode(22, OUTPUT);
 
   //Verde
-  // pinMode(ldrPinEsq, OUTPUT); 
-  // pinMode(ldrPinDir, OUTPUT); 
+  pinMode(ldrPinEsq, INPUT); 
+  pinMode(ldrPinDir, INPUT); 
 }
 
 void loop() {
   
-  digitalWrite(24,HIGH);
-  digitalWrite(22, LOW);
-
-   Curva90();
-   Seguelinha();
-    Verde(); 
+  digitalWrite(22,HIGH);
+  digitalWrite(24,LOW);
+  Curva90(); 
+  Seguelinha();
+ 
+  
+  //Verde(); 
   //testes do motor
   //moverFrente(255);
   //moverTras(255);   
