@@ -14,7 +14,7 @@ void Curva90() {
         while((digitalRead(IR[1]) == 1) && (digitalRead(IR[4]) == 1)){
           Serial.println("90 direita");
           moverDireita90(255);
-          delay(10);
+          delay(15);
         }
       } // FIM CURVA 90 DIREITA 
 
@@ -23,9 +23,7 @@ void Curva90() {
         while((digitalRead(IR[1]) == 1) && (digitalRead(IR[3]) == 1)){
           Serial.println("90 esquerda");
           moverEsquerda90(255);
-          delay(10);
+          delay(15);
         }
       } //FIM CURVA 90 ESQUERDA 
-      
-      Seguelinha();
 }

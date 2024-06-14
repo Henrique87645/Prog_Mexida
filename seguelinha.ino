@@ -14,6 +14,7 @@ void Seguelinha(){
         while(digitalRead(IR[2]) == 0){
           Serial.println("Correção esq");
           moverEsquerda(V);
+          delay(15);
         }
       } //FIM CORREÇÃO SEGUE LINHA ESQUERDA 
 
@@ -22,11 +23,12 @@ void Seguelinha(){
         while(digitalRead(IR[0]) == 0){
           Serial.println("Correção dir");
           moverDireita(V);
+          delay(15);
         }
       } //FIM CORREÇÃO SEGUE LINHA DIREITA 
       
       else {
-        while(digitalRead(IR[1]) == 0){
+        while((digitalRead(IR[0]) == 1) && (digitalRead(IR[1]) == 0) && (digitalRead(IR[2]) == 1)){
           Serial.println("tudo ok");
           moverFrente(V);
           delay(15);

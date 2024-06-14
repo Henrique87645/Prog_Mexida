@@ -1,5 +1,7 @@
 //Arquivo principal que chama funções e adiciona biblioteca
 #include <AFMotor.h>//biblioteca de motores
+#define ldrEsquerdo1 A14
+#define ldrDireito1 A15
 
 //motores
 AF_DCMotor motor3(1); //Seleção do Motor 1
@@ -22,9 +24,9 @@ int IR[] = {48, 44, 50, 52, 46};
 // int k = 0.5; //baixa correção
 
 //LDR (verde) 
- int verdeVal = 600; 
- int ldrEsq = A14; 
- int ldrDir = A15; 
+ int verdeVal = 500; 
+ int ldrEsq = 0; 
+ int ldrDir = 0; 
 
 void setup(){
 //DECLARANDO O SENSOR IR COMO INPUT
@@ -32,14 +34,16 @@ void setup(){
    pinMode(IR[i], INPUT);
    }     
 
-  //Setup Serial Monitor
-  Serial.begin(9600); 
+  //LED
   pinMode(24, OUTPUT);
   pinMode(22, OUTPUT);
 
   //Verde
-  pinMode(ldrPinEsq, INPUT); 
-  pinMode(ldrPinDir, INPUT); 
+  pinMode(ldrEsquerdo1, INPUT); 
+  pinMode(ldrDireito1, INPUT); 
+
+  //Setup Serial Monitor
+  Serial.begin(9600); 
 }
 
 void loop() {
@@ -48,9 +52,9 @@ void loop() {
   digitalWrite(24,LOW);
   Curva90(); 
   Seguelinha();
- 
-  
-  //Verde(); 
+  Verde(); 
+
+
   //testes do motor
   //moverFrente(255);
   //moverTras(255);   
