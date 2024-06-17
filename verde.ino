@@ -8,33 +8,39 @@
 void Verde() {
  ///ler o valor do LDR
  //O valor lido será entre 0 e 1023 
+
   ldrEsq = analogRead(ldrEsquerdo1);
   ldrDir = analogRead(ldrDireito1);
 
-  // beco sem saida (dois verdes ativados)
-  if ((analogRead(ldrEsq) > verdeVal) && (analogRead(ldrDir) > verdeVal)) { 
-    while(digitalRead(IR[1]) == 1){
-      Serial.println("beco verde");  
-      moverEsquerda(255);
-      delay(1500);
-    }
-  }
 
   //notação verde na esquerda
-  if ((analogRead(ldrEsq) > verdeVal) && (analogRead(ldrDir) < verdeVal)  && (digitalRead(IR[0]) == 0) && (digitalRead(IR[4]) == 0)) { 
-    while(analogRead(ldrEsq) > verdeVal){
-      Serial.println("verde esq"); 
-      moverEsquerda90(255);
-      delay(15);
-    }
+  if ((analogRead(ldrEsq) > verdeVal) && (analogRead(ldrDir) < verdeVal)) { 
+        //Enquanto seu valor estiver ligado, ele gira para a esquerda
+        while ((digitalRead(IR[1]) == 0)) {
+
+          Serial.println("Verde esquerda");
+          moverEsquerda90(V);
+          delay(20);
+
+        }
   } 
 
-   //notação verde na direita
-  if ((analogRead(ldrEsq) < verdeVal) && (analogRead(ldrDir) > verdeVal)  && (digitalRead(IR[2]) == 0) && (digitalRead(IR[3]) == 0)) { 
-    while(analogRead(ldrDir) > verdeVal){
-      Serial.println("verde dir"); 
-      moverEsquerda90(255);
-      delay(15);
-    }
+  //notação verde na direita
+  if ((analogRead(ldrEsq) < verdeVal) && (analogRead(ldrDir) > verdeVal)) { 
+        while ((digitalRead(IR[1]) == 0)) {
+
+          Serial.println("Verde direita");
+          moverDireita90(V);
+          delay(20);
+
+        }
   } 
+  // beco sem saida (dois verdes ativados)
+  // if ((analogRead(ldrEsq) > verdeVal) && (analogRead(ldrDir) > verdeVal)) { 
+  //   while(digitalRead(IR[1]) == 1){
+  //     Serial.println("beco verde");  
+  //     moverTras(V);
+  //     delay(15);
+  //   }
+  // }
 }

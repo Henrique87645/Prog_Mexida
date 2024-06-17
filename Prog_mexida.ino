@@ -1,14 +1,16 @@
 //Arquivo principal que chama funções e adiciona biblioteca
 #include <AFMotor.h>//biblioteca de motores
-#define ldrEsquerdo1 A14
-#define ldrDireito1 A15
+#define ldrEsquerdo1 A14//verde esquerdo
+#define ldrDireito1 A15//verde direito
 
 //motores
 AF_DCMotor motor3(1); //Seleção do Motor 1
 AF_DCMotor motor4(2); //Seleção do Motor 2
 
-//VELOCIDADE
-int V = 210;
+
+int V = 100;// velocidade
+int C = 70; // correção curva de 90
+int c = 30;//correção segue linha
 
 //segue linha
 int IR[] = {48, 44, 50, 52, 46};
@@ -20,8 +22,7 @@ int IR[] = {48, 44, 50, 52, 46};
   [3] = direita 90
   [4] = esquerda 90
 */
-//int K = 0.8; //alta correção
-// int k = 0.5; //baixa correção
+
 
 //LDR (verde) 
  int verdeVal = 500; 
@@ -47,12 +48,23 @@ void setup(){
 }
 
 void loop() {
-  
+
+
+  //TESTE VOIDS
+
+   //if ((analogRead(ldrEsq) > verdeVal) || (analogRead(ldrDir) > verdeVal)) { 
+        //Curva90(); 
+ // } 
+
   digitalWrite(22,HIGH);
   digitalWrite(24,LOW);
-  Curva90(); 
-  Seguelinha();
-  Verde(); 
+
+  //Verde(); 
+  //Curva90(); 
+  //Seguelinha();
+
+  Serial.println(analogRead(ldrEsquerdo1));
+    Serial.println( analogRead(ldrDireito1));
 
 
   //testes do motor
