@@ -6,13 +6,13 @@ void moverDireita90(unsigned char V)
 {
   motor3.setSpeed(V+C);
   motor3.run(FORWARD);
-  motor4.setSpeed(V-C);
+  motor4.setSpeed(V+C);
   motor4.run(FORWARD);
 } 
 
 void moverEsquerda90(unsigned char V)
 {
-  motor3.setSpeed(V-C);
+  motor3.setSpeed(V+C);
   motor3.run(BACKWARD);
   motor4.setSpeed(V+C);
   motor4.run(BACKWARD);
@@ -21,7 +21,7 @@ void moverEsquerda90(unsigned char V)
 //COMEÇO CURVAS IR
 void moverDireita(unsigned char V)
 {
-  motor3.setSpeed(V);
+  motor3.setSpeed(V+m);
   motor3.run(FORWARD);
   motor4.setSpeed(V-c);
   motor4.run(BACKWARD);
@@ -31,7 +31,7 @@ void moverEsquerda(unsigned char V)
 {
   motor3.setSpeed(V-c);
   motor3.run(FORWARD);
-  motor4.setSpeed(V);
+  motor4.setSpeed(V+m);
   motor4.run(BACKWARD);
 } // FIM CURVA IR 
 
