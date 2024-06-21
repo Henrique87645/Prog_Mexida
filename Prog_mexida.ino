@@ -1,16 +1,25 @@
-//Arquivo principal que chama funções e adiciona biblioteca
+#include <Ultrasonic.h>
 #include <AFMotor.h>//biblioteca de motores
+
 #define ldrEsquerdo1 A14//verde esquerdo
-#define ldrDireito1 A15//verde direito
+#define ldrDireito1 A12//verde direito
 
 //motores
 AF_DCMotor motor3(1); //Seleção do Motor 1
 AF_DCMotor motor4(2); //Seleção do Motor 2
 
+Ultrasonic ultrasonicF (33, 34);
+Ultrasonic ultrasonicL1 (35, 36);
+Ultrasonic ultrasonicL2 (37, 38);
+
+double distanciaF = 0;
+double distanciaL1 = 0;
+double distanciaL2 = 0;
 
 int V = 100;// velocidade
 int C = 70; // correção curva de 90
-int c = 30;//correção segue linha
+int c = 70;//correção segue linha
+int m = 110;
 
 //segue linha
 int IR[] = {48, 44, 50, 52, 46};
@@ -25,14 +34,16 @@ int IR[] = {48, 44, 50, 52, 46};
 
 
 //LDR (verde) 
- int verdeVal = 500; 
+ int verdeVal = 400; 
  int ldrEsq = 0; 
  int ldrDir = 0; 
+ 
 
 void setup(){
-//DECLARANDO O SENSOR IR COMO INPUT
+
+    //DECLARANDO O SENSOR IR COMO INPUT
     for (int i = 0; i <= 5; i++) {
-   pinMode(IR[i], INPUT);
+      pinMode(IR[i], INPUT);
    }     
 
   //LED
@@ -45,32 +56,20 @@ void setup(){
 
   //Setup Serial Monitor
   Serial.begin(9600); 
+
+  
 }
 
 void loop() {
 
-
-  //TESTE VOIDS
-
-   //if ((analogRead(ldrEsq) > verdeVal) || (analogRead(ldrDir) > verdeVal)) { 
-        //Curva90(); 
- // } 
-
   digitalWrite(22,HIGH);
   digitalWrite(24,LOW);
 
-  //Verde(); 
-  //Curva90(); 
-  //Seguelinha();
+  //TESTE VOIDS
+  Curva90();
+  Seguelinha();
+  Obstaculo();
+   
+ // Verde();
+ }
 
-  Serial.println(analogRead(ldrEsquerdo1));
-    Serial.println( analogRead(ldrDireito1));
-
-
-  //testes do motor
-  //moverFrente(255);
-  //moverTras(255);   
-  //moverDireita(255);
-  //moverEsquerda(255);
-  //parar(0);
-}
